@@ -20,7 +20,7 @@ ucFirst('hello');
 
 function checkSpam(str) {
     let down = str.toLowerCase();
-    if (down.includes('badWord'.toLowerCase()) == true|| down.includes('XXX'.toLowerCase()) == true) {
+    if (down.includes('badWord'.toLowerCase()) || down.includes('XXX'.toLowerCase()) ) {
         return true;
     } else {
         return false;
@@ -114,7 +114,7 @@ let strings = ["кришна", "кришна", "харе", "харе", "харе
 function uniq(mas){
     let newStr = [];    
     for (let i = 0; i < mas.length; i++) {
-        if (newStr.includes(mas[i]) == false) {
+        if (!newStr.includes(mas[i]) ) {
             newStr.push(mas[i]);
         }
     }
@@ -219,24 +219,24 @@ filterFor(arr, 3.11);
 */
 
 
-// НЕ ПОЛУЧИЛОСЬ, НА УРОКЕ ХОЧУ РАЗОБРАТЬ С ВАМИ
-
-// const catAges = [7 , 3, 2, 4, 1, 15, 8, 1, 9, 2];
-// function getAverageHumanAge (arr) {
-
-//     const humAge = arr.reduce((item, acc) =>{
-//     acc =  (acc > 2) ? acc * 7 : acc * 10;
-//     console.log('humans age: ' + acc);
-//     }, arr[0] )
-
-//     const newHAge = humAge.reduce((acc, item) => {
-//         if (acc < 18) {
-//             delete acc;
-//         }
-//     }, humAge[0])
 
 
+const catAges = [7 , 3, 2, 4, 1, 15, 8, 1, 9, 2];
+function getAverageHumanAge (arr) {
 
-// }
-// getAverageHumanAge (catAges);
+ let humanAge = arr.map(item => {
+    item = (item > 2) ? item * 7 : item *10;
+    return item;
+ });
+//  return humanAge;
+ 
+ let adultCats = humanAge.filter(item => item > 18);
+// return adultCats;
 
+let avarageCAge = adultCats.reduce((acc, item) => acc + item, 0);
+avarageCAge /= adultCats.length;
+return avarageCAge;
+
+
+}
+getAverageHumanAge (catAges);
